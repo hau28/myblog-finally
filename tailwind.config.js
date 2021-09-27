@@ -3,17 +3,38 @@ module.exports = {
   purge: ["./pages/**/*.{js,ts,jsx,tsx}", "./components/**/*.{js,ts,jsx,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    fontFamily: {
-      serif: ["Merriweather"],
-      merri: ["Merriweather", "ui-serif", "serif"],
-      cinzel: ["Cinzel", "ui-serif", "serif"],
-    },
-    extend: {},
-    colors: {
-      "prim-2": "#EAE9E4",
-      "prim-4": "#DFDCCF",
-      "prim-6": "#6a5921",
-      "gray-1": "#F1F1F1",
+    extend: {
+      fontFamily: {
+        serif: [
+          "Merriweather",
+          "ui-serif",
+          "Georgia",
+          "Cambria",
+          "Times New Roman",
+          "Times",
+          "serif",
+        ],
+        playfair: [
+          "Playfair Display",
+          "Merriweather",
+          "ui-serif",
+          "Georgia",
+          "Cambria",
+          "Times New Roman",
+          "Times",
+          "serif",
+        ],
+        cinzel: ["Cinzel", "ui-serif", "serif"],
+      },
+      backgroundImage: {
+        typing: "url('/typing.gif')",
+      },
+      colors: {
+        "prim-2": "#eae5e4",
+        "prim-4": "#dfd3cf",
+        "prim-6": "#693c20",
+        "gray-1": "#F1F1F1",
+      },
     },
   },
   variants: {

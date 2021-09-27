@@ -27,7 +27,7 @@ export default function PostPreview({
         </div>
       </Link>
       <Link href="/">
-        <p className="font-serif italic text-prim-6 mb-2 hover:cursor-pointer hover:underline">
+        <p className="font-playfair italic text-prim-6 mb-2 hover:cursor-pointer hover:underline">
           On {date}
         </p>
       </Link>
@@ -52,7 +52,7 @@ export default function PostPreview({
         }}
       />
       <div className="flex self-stretch justify-between items-center">
-        <div className="flex bg-blue-300 items-center divide-x text-xs tracking-widest">
+        <div className="flex items-center divide-x divide-black text-xs tracking-widest">
           <Link href={`/category/${category.toLowerCase()}`}>
             <span className="pr-4 hover:cursor-pointer hover:text-prim-6 hover:underline transition-all">
               {category.toUpperCase()}
