@@ -3,10 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { IoIosLink } from "react-icons/io";
 import { IoLogoFacebook } from "react-icons/io5";
-import ReactMarkdown from "react-markdown";
-import ReactDom from "react-dom";
 import { useEffect, useRef, useState } from "react";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
   confettiIcon,
   confettiIconEnable,
@@ -16,6 +13,19 @@ import {
   heartIconEnable,
 } from "../components/AnimatedIcons";
 import { useMediaQuery } from "react-responsive";
+import {
+  P1,
+  P,
+  H2,
+  H3,
+  Code,
+  CodeBlock,
+  Ol,
+  Ul,
+  Li,
+  Blockquote,
+} from "../components/PostContent";
+import Script from "next/script";
 
 const post = {
   date: "19 Aug. 2020",
@@ -46,83 +56,6 @@ const relatedPosts = [
       "https://belletrist.qodeinteractive.com/wp-content/uploads/2020/08/Blog-single-img14.jpg",
   },
 ];
-
-function P1(props) {
-  return (
-    <p
-      className="mb-5 leading-relaxed first-letter:float-left first-letter:text-5xl first-letter:pr-3 first-letter:font-black"
-      {...props}
-    />
-  );
-}
-
-function P(props) {
-  return <p className="mb-5 leading-relaxed" {...props} />;
-}
-
-function H2(props) {
-  return (
-    <h2 className="font-sans text-3xl font-semibold pt-3 mb-5" {...props} />
-  );
-}
-
-function H3(props) {
-  return <h3 className="font-sans text-2xl font-semibold mb-5" {...props} />;
-}
-
-function Code(props) {
-  return <code className="bg-gray-200 p-1 rounded-md" {...props} />;
-}
-
-function CodeBlock(props) {
-  return (
-    <div className="mb-5">
-      <SyntaxHighlighter
-        useInlineStyles
-        language="javascript"
-        customStyle={{
-          overflow: "hidden",
-          backgroundColor: "rgba(243, 244, 246)",
-          borderRadius: "0.5rem",
-        }}
-        lineProps={{
-          style: {
-            wordBreak: "break-all",
-            whiteSpace: "pre-wrap",
-          },
-        }}
-        wrapLines={true}
-        {...props}
-      />
-    </div>
-  );
-}
-
-function Ol(props) {
-  return <ol className="list-decimal mb-5 pl-5" {...props} />;
-}
-
-function Ul(props) {
-  return <ul className="list-decimal mb-5 pl-5" {...props} />;
-}
-
-function Li(props) {
-  return <li className="mb-2" {...props} />;
-}
-
-function Blockquote({ quote, person }) {
-  return (
-    <blockquote className="relative p-4 pb-3 mb-5 text-xl italic border-l-4 border-neutral-500 quote">
-      <span className="text-4xl absolute font-black text-gray-400 left-2 top-0">
-        &ldquo;
-      </span>
-      <p className="mb-4 pt-2">{quote}</p>
-      <cite className="flex">
-        <span className="text-sm italic font-bold">- {person}</span>
-      </cite>
-    </blockquote>
-  );
-}
 
 function PanelHeader({ children }) {
   return (
@@ -162,10 +95,6 @@ var equality = (result, nextState) => result === nextState;
 var actions = [];
 `;
 
-const downed = false;
-const confettied = false;
-const hearted = false;
-
 export default function Post() {
   const [showLeftPanel, setShowLeftPanel] = useState(false);
   const mainRef = useRef();
@@ -173,9 +102,9 @@ export default function Post() {
   const isXl = useMediaQuery({
     query: "(min-width: 1280px)",
   });
-  const downColor = () => (downed ? "blue" : "gray");
-  const confettiColor = () => (confettied ? "yellow" : "gray");
-  const heartColor = () => (hearted ? "red" : "gray");
+  const downed = false;
+  const confettied = false;
+  const hearted = false;
   const handleScroll = () => {
     const position = window.scrollY;
     const windowHeight = window.innerHeight;
@@ -199,6 +128,11 @@ export default function Post() {
   }, []);
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
+      <Script
+        src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"
+        strategy="beforeInteractive"
+      ></Script>
+
       <Head>
         <title>Post name</title>
         <link rel="icon" href="/favicon.ico" />
@@ -325,7 +259,9 @@ export default function Post() {
             <div className="flex items-center font-bold gap-4">
               <div className="flex flex-col items-center hover:cursor-pointer ">
                 <div
-                  className={`flex items-center bg-${downColor()}-100 p-1 rounded-3xl transition-all`}
+                  className={`flex items-center ${
+                    downed ? "bg-blue-100" : "bg-gray-100"
+                  } p-1 rounded-3xl transition-all`}
                   style={{ padding: "calc(0.25rem + 3px)" }}
                 >
                   <div
@@ -334,11 +270,17 @@ export default function Post() {
                     }}
                   ></div>
                 </div>
-                <span className={`text-${downColor()}-500`}>3</span>
+                <span
+                  className={`${downed ? "text-blue-500" : "text-gray-500"}`}
+                >
+                  3
+                </span>
               </div>
               <div className="flex flex-col items-center hover:cursor-pointer">
                 <div
-                  className={`flex items-center bg-${confettiColor()}-100 p-1 rounded-3xl transition-all`}
+                  className={`flex items-center ${
+                    confettied ? "bg-yellow-100" : "bg-gray-100"
+                  } p-1 rounded-3xl transition-all`}
                 >
                   <div
                     dangerouslySetInnerHTML={{
@@ -346,11 +288,19 @@ export default function Post() {
                     }}
                   ></div>
                 </div>
-                <span className={`text-${confettiColor()}-500`}>3</span>
+                <span
+                  className={`${
+                    confettied ? "text-yellow-500" : "text-gray-500"
+                  }`}
+                >
+                  3
+                </span>
               </div>
               <div className="flex flex-col items-center hover:cursor-pointer">
                 <div
-                  className={`flex items-center bg-${heartColor()}-100 rounded-3xl transition-all`}
+                  className={`flex items-center ${
+                    hearted ? "bg-red-100" : "bg-gray-100"
+                  } rounded-3xl transition-all`}
                   style={{ padding: "calc(0.25rem + 3px)" }}
                 >
                   <div
@@ -359,7 +309,11 @@ export default function Post() {
                     }}
                   ></div>
                 </div>
-                <span className={`text-${heartColor()}-500`}>3</span>
+                <span
+                  className={`${hearted ? "text-red-500" : "text-gray-500"}`}
+                >
+                  3
+                </span>
               </div>
             </div>
             <div className="flex items-center gap-4  text-2xl">

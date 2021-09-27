@@ -6,23 +6,23 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link
-            href="https://fonts.googleapis.com/css2?family=Cinzel&display=optional"
+            href="https://fonts.googleapis.com/css2?family=Cinzel&display=swap"
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=optional"
+            href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap"
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Roboto&display=optional"
+            href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat&display=optional"
+            href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
             rel="stylesheet"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Merriweather&display=optional"
+            href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap"
             rel="stylesheet"
           />
         </Head>

@@ -1,4 +1,4 @@
-export const confettiIcon = `<script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+export const confettiIcon = `
 <lord-icon
     src="https://cdn.lordicon.com/lupuorrc.json"
     trigger="loop-on-hover"
@@ -6,7 +6,7 @@ export const confettiIcon = `<script src="https://cdn.lordicon.com/libs/mssddfmo
     style="width:32px;height:32px">
 </lord-icon>`;
 
-export const confettiIconEnable = `<script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+export const confettiIconEnable = `
 <lord-icon
     src="https://cdn.lordicon.com/lupuorrc.json"
     trigger="loop-on-hover"
@@ -14,7 +14,7 @@ export const confettiIconEnable = `<script src="https://cdn.lordicon.com/libs/ms
     style="width:32px;height:32px">
 </lord-icon>`;
 
-export const downIcon = `<script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+export const downIcon = `
 <lord-icon
     src="https://cdn.lordicon.com/hrqwmuhr.json"
     trigger="loop-on-hover"
@@ -22,7 +22,7 @@ export const downIcon = `<script src="https://cdn.lordicon.com/libs/mssddfmo/lor
     style="width:26px;height:26px">
 </lord-icon>`;
 
-export const downIconEnable = `<script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+export const downIconEnable = `
 <lord-icon
     src="https://cdn.lordicon.com/hrqwmuhr.json"
     trigger="loop-on-hover"
@@ -30,7 +30,7 @@ export const downIconEnable = `<script src="https://cdn.lordicon.com/libs/mssddf
     style="width:26px;height:26px">
 </lord-icon>`;
 
-export const heartIcon = `<script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+export const heartIcon = `
 <lord-icon
     src="https://cdn.lordicon.com/rjzlnunf.json"
     trigger="loop-on-hover"
@@ -38,7 +38,7 @@ export const heartIcon = `<script src="https://cdn.lordicon.com/libs/mssddfmo/lo
     style="width:26px;height:26px">
 </lord-icon>`;
 
-export const heartIconEnable = `<script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
+export const heartIconEnable = `
 <lord-icon
     src="https://cdn.lordicon.com/rjzlnunf.json"
     trigger="loop-on-hover"
