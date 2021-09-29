@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 export function P1(props) {
@@ -15,16 +16,16 @@ export function P(props) {
 
 export function H2(props) {
   return (
-    <h2 className="font-sans text-3xl font-semibold pt-3 mb-5" {...props} />
+    <h2 className="font-serif text-3xl font-semibold pt-3 mb-6" {...props} />
   );
 }
 
 export function H3(props) {
-  return <h3 className="font-sans text-2xl font-semibold mb-5" {...props} />;
+  return <h3 className="font-serif text-2xl font-semibold mb-5" {...props} />;
 }
 
 export function Code(props) {
-  return <code className="bg-gray-200 p-1 rounded-md" {...props} />;
+  return <code className="bg-gray-1 p-1 rounded-md" {...props} />;
 }
 
 export function CodeBlock(props) {
@@ -35,12 +36,13 @@ export function CodeBlock(props) {
         language="javascript"
         customStyle={{
           overflow: "hidden",
-          backgroundColor: "rgba(243, 244, 246)",
+          borderWidth: 1,
           borderRadius: "0.5rem",
+          backgroundColor: "#F1F1F1",
+          borderColor: "#eae5e4",
         }}
         lineProps={{
           style: {
-            wordBreak: "break-all",
             whiteSpace: "pre-wrap",
           },
         }}
@@ -74,5 +76,42 @@ export function Blockquote({ quote, person }) {
         <span className="text-sm italic font-bold">- {person}</span>
       </cite>
     </blockquote>
+  );
+}
+
+export function Figure() {
+  const [expand, setExpand] = useState(false);
+  function toggleExpand() {
+    if (expand === true) {
+      setExpand(false);
+    }
+    if (expand === false) {
+      setExpand(true);
+    }
+  }
+  return (
+    <figure className="mb-5 text-center">
+      {expand ? (
+        <img
+          src="https://9to5mac.com/wp-content/uploads/sites/6/2020/10/Orbs-Blue-Dark.jpg?quality=82&strip=all"
+          className="duration-75 max-h-full w-full h-full object-cover shadow-lg rounded-xl"
+          onClick={() => toggleExpand()}
+        />
+      ) : (
+        <img
+          src="https://9to5mac.com/wp-content/uploads/sites/6/2020/10/Orbs-Blue-Dark.jpg?quality=82&strip=all"
+          className={`max-h-3/4-screen hover:max-h-3/4-screen-2rem ${"duration-300 transition-all ease-in-out"}  w-full h-full object-cover shadow-lg rounded-xl ${
+            expand ? "hidden" : ""
+          }`}
+          onClick={() => {
+            toggleExpand();
+          }}
+        />
+      )}
+
+      <figcaption className="font-sans text-sm text-gray-700 mt-2">
+        Picture on Unsplash
+      </figcaption>
+    </figure>
   );
 }

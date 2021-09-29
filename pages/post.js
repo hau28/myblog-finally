@@ -24,8 +24,11 @@ import {
   Ul,
   Li,
   Blockquote,
+  Figure,
 } from "../components/PostContent";
 import Script from "next/script";
+import Breadcrumbs from "../components/Breadcrumbs";
+import Subscribe from "../components/Subscribe";
 
 const post = {
   date: "19 Aug. 2020",
@@ -138,17 +141,8 @@ export default function Post() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <div className="font-playfair self-stretch bg-gray-1 py-4 px-6 sm:px-16 gap-2">
-        <span className="hover:cursor-pointer text-prim-6 hover:opacity-75 transition-all">
-          Home
-        </span>
-        <span className="px-2">›</span>
-        <span className="hover:cursor-pointer text-prim-6 hover:opacity-75  transition-all">
-          Poem
-        </span>
-        <span className="px-2">›</span>
-        <span>Get ready for holiday on a christmas week</span>
-      </div>
+
+      <Breadcrumbs paths={[post.category, post.title]} />
       <div className="h-64 sm:h-72 md:h-80 lg:h-96 w-full">
         <img src={imgUrl} className="w-full h-full object-cover" />
       </div>
@@ -156,8 +150,7 @@ export default function Post() {
         <div
           className={`${
             showLeftPanel ? "" : "pointer-events-none -translate-x-72"
-          } fixed h-full top-0 left-0 transition-all ease-out flex flex-col justify-center pl-10 pr-8`}
-          style={{ width: 320 }}
+          } fixed w-fixed-panel h-full top-0 left-0 transition-all ease-out flex flex-col justify-center pl-10 pr-8`}
         >
           <PanelHeader>Related posts</PanelHeader>
           {relatedPosts.map((relatePost, i) => (
@@ -179,10 +172,10 @@ export default function Post() {
           <PanelHeader>Listening to this</PanelHeader>
           <iframe
             width="100%"
-            height="166"
+            height="166px"
             scrolling="no"
             frameborder="no"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/205531776&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/227042825&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
           ></iframe>
         </div>
       )}
@@ -224,6 +217,7 @@ export default function Post() {
               aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
               laboris nisi ut aliquip ex ea commodo consequat.
             </P>
+            <Figure />
             <Ol className="list-decimal mb-5 pl-5">
               <Li>
                 Aorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -255,12 +249,29 @@ export default function Post() {
               nisi ut aliquip ex ea commodo consequat.
             </P>
           </div>
+          <div className="font-serif flex items-center mb-8 flex-wrap gap-2 text-xs">
+            <div className="border border-prim-4 py-2 px-3 hover:cursor-pointer">
+              <span>Shortag 1</span>
+            </div>
+            <div className="bg-gray-1 py-2 px-3 hover:cursor-pointer">
+              <span>Shortag 1</span>
+            </div>
+            <div className="bg-gray-1 py-2 px-3 hover:cursor-pointer">
+              <span>Shortag 1</span>
+            </div>
+            <div className="bg-gray-1 py-2 px-3 hover:cursor-pointer">
+              <span>Shortag 1</span>
+            </div>
+            <div className="py-2 px-3 hover:cursor-pointer hover:underline">
+              <span>See more...</span>
+            </div>
+          </div>
           <div className="font-sans flex items-center mb-5 justify-between">
             <div className="flex items-center font-bold gap-4">
               <div className="flex flex-col items-center hover:cursor-pointer ">
                 <div
                   className={`flex items-center ${
-                    downed ? "bg-blue-100" : "bg-gray-100"
+                    downed ? "bg-blue-100" : "bg-gray-1"
                   } p-1 rounded-3xl transition-all`}
                   style={{ padding: "calc(0.25rem + 3px)" }}
                 >
@@ -279,7 +290,7 @@ export default function Post() {
               <div className="flex flex-col items-center hover:cursor-pointer">
                 <div
                   className={`flex items-center ${
-                    confettied ? "bg-yellow-100" : "bg-gray-100"
+                    confettied ? "bg-yellow-100" : "bg-gray-1"
                   } p-1 rounded-3xl transition-all`}
                 >
                   <div
@@ -299,7 +310,7 @@ export default function Post() {
               <div className="flex flex-col items-center hover:cursor-pointer">
                 <div
                   className={`flex items-center ${
-                    hearted ? "bg-red-100" : "bg-gray-100"
+                    hearted ? "bg-red-100" : "bg-gray-1"
                   } rounded-3xl transition-all`}
                   style={{ padding: "calc(0.25rem + 3px)" }}
                 >
@@ -322,8 +333,27 @@ export default function Post() {
             </div>
           </div>
         </article>
-        <div className="col-span-0 xl:col-span-3" />
+        <div className="col-span-0 xl:col-span-3 pl-12 pr-2 self-start mt-16">
+          <PanelHeader>Newest posts</PanelHeader>
+          {relatedPosts.map((relatePost, i) => (
+            <div className="mb-4" key={i}>
+              <img
+                src={relatePost.imgUrl}
+                className=" h-40 mr-2 object-cover w-full"
+                style={{ marginTop: 4 }}
+              ></img>
+              <h2 className="font-cinzel text-lg font-semibold  transition-all ease-in-out duration-500">
+                {relatePost.title}
+              </h2>
+              <p className="font-playfair italic text-sm text-prim-6 mb-1 hover:cursor-pointer hover:underline">
+                On {relatePost.date}
+              </p>
+            </div>
+          ))}
+          <div className="h-2" />
+        </div>
       </main>
+      <Subscribe />
       <Footer />
     </div>
   );

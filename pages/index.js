@@ -1,8 +1,8 @@
 import Head from "next/head";
 import Header from "../components/Header";
 import PostPreview from "../components/PostPreview";
-import { IoIosSend } from "react-icons/io";
 import Footer from "../components/Footer";
+import Subscribe from "../components/Subscribe";
 
 const posts = [
   {
@@ -59,17 +59,17 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <Head>
-        <title>Boy That Feels</title>
+        <title>My Blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="text-white lg:text-black self-stretch h-screen bg-prim-4 flex flex-col">
         <div className="block lg:hidden bg-typing absolute w-full h-screen z-0 bg-no-repeat bg-cover" />
         <div className="block lg:hidden bg-black bg-opacity-60 absolute w-full h-screen z-0 bg-no-repeat bg-cover" />
         <Header homepage />
-        <div className="z-10 grid lg:grid-cols-2 h-full xl:px-16 pb-16 lg:pt-8">
+        <div className="z-10 grid lg:grid-cols-2 min-h-full xl:px-16 pb-16 lg:pt-8">
           <div className="p-8 pt-0 p-16 pt-8 hidden lg:block">
             <img
-              className="object-cover flex-1 lg:h-full w-full"
+              className="object-cover flex-1 lg:min-h-full w-full"
               src="/typing.gif"
             />
           </div>
@@ -111,36 +111,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-        <div className="self-stretch bg-gray-1 flex flex-col py-32 px-6 md:px-10 xl:px-32">
-          <div className="lg:px-16 px-6 text-center items-center grid md:grid-cols-2">
-            <h1 className="font-cinzel text-5xl md:text-6xl self-center mb-6 md:mb-0">
-              Subscribe to
-              <br />
-              my blog
-            </h1>
-            <div className="self-center flex flex-col md:text-left mx-4">
-              <p className="mb-6 font-serif md:ml-2 md:mb-2">
-                Will let you know via e-mail about my new posts and other
-                updates, you can unsubscribe anytime.
-              </p>
-              <form className="w-full">
-                <div className="flex items-center border-b border-gray-400 py-2">
-                  <input
-                    className="font-serif bg-gray-1 border-none w-full  mr-3 py-1 px-2 leading-tight focus:outline-none"
-                    type="text"
-                    placeholder="Your e-mail"
-                  />
-                  <button
-                    className="flex-shrink-0 text-teal-500 text-sm pt-1 px-2 text-2xl"
-                    type="button"
-                  >
-                    <IoIosSend />
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+        <Subscribe />
       </main>
       <Footer />
     </div>

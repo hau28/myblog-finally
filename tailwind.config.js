@@ -16,7 +16,6 @@ module.exports = {
         ],
         playfair: [
           "Playfair Display",
-          "Merriweather",
           "ui-serif",
           "Georgia",
           "Cambria",
@@ -34,6 +33,18 @@ module.exports = {
         "prim-4": "#dfd3cf",
         "prim-6": "#693c20",
         "gray-1": "#F1F1F1",
+      },
+      maxHeight: {
+        "1/2-screen": "50vh",
+        "1/2-screen-2rem": "calc(50vh + 2rem)",
+        "3/4-screen": "75vh",
+        "3/4-screen-2rem": "calc(75vh + 2rem)",
+      },
+      transitionDuration: {
+        0: "0ms",
+      },
+      width: {
+        "fixed-panel": "320px",
       },
     },
   },

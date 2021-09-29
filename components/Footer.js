@@ -40,7 +40,7 @@ export default function Footer() {
         </div>
 
         <p>
-          Copyright 2021 <sup>©</sup> boythatfeels.com
+          Copyright 2021 <sup>©</sup> vintageblog.com
         </p>
       </div>
     </footer>
