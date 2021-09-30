@@ -1,0 +1,3 @@
+.category:hover .categorychild {
+  transform: translateX(2rem);
+}

@@ -60,6 +60,52 @@ const relatedPosts = [
   },
 ];
 
+const newestPosts = [
+  {
+    date: "19 Aug. 2020",
+    title: "A summer and fall in Prague",
+    imgUrl:
+      "https://belletrist.qodeinteractive.com/wp-content/uploads/2020/08/Blog-single-img14.jpg",
+  },
+  {
+    date: "19 Aug. 2020",
+    title: "A summer and fall in Prague",
+    imgUrl:
+      "https://belletrist.qodeinteractive.com/wp-content/uploads/2020/08/Blog-single-img14.jpg",
+  },
+  {
+    date: "19 Aug. 2020",
+    title: "A summer and fall in Prague",
+    imgUrl:
+      "https://belletrist.qodeinteractive.com/wp-content/uploads/2020/08/Blog-single-img14.jpg",
+  },
+];
+
+const commonTags = [
+  "Shortag",
+  "Shortag",
+  "Shortag",
+  "Shortag",
+  "Shortag",
+  "Shortag",
+  "Shortag",
+  "Shortag",
+  "Shortag",
+  "Shortag",
+  "Shortag",
+  "Shortag",
+  "Shortag",
+];
+
+const categories = [
+  "Category",
+  "Category",
+  "Category",
+  "Category",
+  "Category",
+  "Category",
+];
+
 function PanelHeader({ children }) {
   return (
     <div>
@@ -99,12 +145,15 @@ var actions = [];
 `;
 
 export default function Post() {
-  const [showLeftPanel, setShowLeftPanel] = useState(false);
+  const [fixedLeftPanel, setFixedLeftPanel] = useState(false);
+  const [leftPanelWidth, setLeftPanelWidth] = useState(100);
+  const [scrollBottom, setScrollBottom] = useState(false);
   const mainRef = useRef();
-  const { date, title, category, numOfComments, imgUrl } = post;
+  const leftPanelRef = useRef();
   const isXl = useMediaQuery({
     query: "(min-width: 1280px)",
   });
+  const { date, title, category, numOfComments, imgUrl } = post;
   const downed = false;
   const confettied = false;
   const hearted = false;
@@ -112,21 +161,39 @@ export default function Post() {
     const position = window.scrollY;
     const windowHeight = window.innerHeight;
     const mainHeight = mainRef.current.clientHeight;
-    if (
-      position > 530 &&
-      position < 530 + mainHeight - windowHeight + 20 &&
-      mainHeight > windowHeight
-    ) {
-      setShowLeftPanel(true);
+    const port = 558;
+    if (position > port) {
+      if (
+        position < port + mainHeight - windowHeight + 20 &&
+        mainHeight > windowHeight
+      ) {
+        if (isXl) {
+          setLeftPanelWidth(leftPanelRef.current.offsetWidth);
+          setFixedLeftPanel(true);
+        } else setFixedLeftPanel(false);
+        setScrollBottom(false);
+      } else {
+        if (isXl) {
+          setScrollBottom(true);
+        }
+        setFixedLeftPanel(false);
+      }
     } else {
-      setShowLeftPanel(false);
+      setFixedLeftPanel(false);
+      setScrollBottom(false);
     }
   };
-
+  const handleResize = () => {
+    if (isXl) {
+      setLeftPanelWidth(leftPanelRef.current.offsetWidth);
+    }
+  };
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
   return (
@@ -146,45 +213,55 @@ export default function Post() {
       <div className="h-64 sm:h-72 md:h-80 lg:h-96 w-full">
         <img src={imgUrl} className="w-full h-full object-cover" />
       </div>
-      {isXl && (
-        <div
-          className={`${
-            showLeftPanel ? "" : "pointer-events-none -translate-x-72"
-          } fixed w-fixed-panel h-full top-0 left-0 transition-all ease-out flex flex-col justify-center pl-10 pr-8`}
-        >
-          <PanelHeader>Related posts</PanelHeader>
-          {relatedPosts.map((relatePost, i) => (
-            <div className="mb-4" key={i}>
-              <p className="font-playfair italic text-sm text-prim-6 mb-1 hover:cursor-pointer hover:underline">
-                On {relatePost.date}
-              </p>
-              <h2 className="font-cinzel text-lg font-semibold  transition-all ease-in-out duration-500">
-                <img
-                  src={relatePost.imgUrl}
-                  className=" h-12 w-12 mr-2 object-cover float-left"
-                  style={{ marginTop: 4 }}
-                ></img>
-                {relatePost.title}
-              </h2>
-            </div>
-          ))}
-          <div className="h-2" />
-          <PanelHeader>Listening to this</PanelHeader>
-          <iframe
-            width="100%"
-            height="166px"
-            scrolling="no"
-            frameborder="no"
-            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/227042825&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
-          ></iframe>
-        </div>
-      )}
+
       <main
         ref={mainRef}
         className="flex flex-col xl:grid xl:grid-cols-12 items-center w-full min-h-screen my-8 px-8 sm:px-10"
       >
-        <div className="col-span-0 xl:col-span-3"></div>
-        <article className="font-serif bg-white max-w-2xl xl:col-span-6 xl:max-w-none">
+        <div
+          className={`col-span-12 xl:col-span-3 ${
+            scrollBottom ? "self-end" : "self-start"
+          } order-2 xl:order-1`}
+          ref={leftPanelRef}
+        >
+          <div
+            className={`${fixedLeftPanel ? "fixed top-0" : ""} ${
+              scrollBottom ? "-translate-y-44" : ""
+            } pt-16  pr-12 flex flex-col-reverse xl:flex-col`}
+            style={{ width: fixedLeftPanel ? leftPanelWidth : "auto" }}
+          >
+            <div>
+              <PanelHeader>Related posts</PanelHeader>
+              {relatedPosts.map((relatePost, i) => (
+                <div className="mb-3" key={i}>
+                  <p className="font-playfair italic text-sm text-prim-6 mb-1 hover:cursor-pointer hover:underline">
+                    On {relatePost.date}
+                  </p>
+                  <h2 className="font-cinzel text-lg font-semibold  transition-all ease-in-out duration-500">
+                    <img
+                      src={relatePost.imgUrl}
+                      className=" h-12 w-12 mr-2 object-cover float-left"
+                      style={{ marginTop: 4 }}
+                    ></img>
+                    {relatePost.title}
+                  </h2>
+                </div>
+              ))}
+            </div>
+            <div className="h-8 xl:h-2" />
+            <div>
+              <PanelHeader>Listening to this</PanelHeader>
+              <iframe
+                className="mt-4 transition-all h-28 hover:h-40"
+                width="100%"
+                scrolling="no"
+                frameborder="no"
+                src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/227042825&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"
+              ></iframe>
+            </div>
+          </div>
+        </div>
+        <article className="font-serif bg-white max-w-2xl xl:col-span-6 xl:max-w-none order-1 xl:order-2">
           <p className="font-playfair italic text-prim-6 mb-2 hover:cursor-pointer hover:underline">
             On {date}
           </p>
@@ -333,10 +410,11 @@ export default function Post() {
             </div>
           </div>
         </article>
-        <div className="col-span-0 xl:col-span-3 pl-12 pr-2 self-start mt-16">
+        <div className="xl:col-span-3 xl:pl-12 xl:pr-2 self-start mt-6 xl:mt-16 order-3">
           <PanelHeader>Newest posts</PanelHeader>
+          <div className="h-1" />
           {relatedPosts.map((relatePost, i) => (
-            <div className="mb-4" key={i}>
+            <div className="mb-6" key={i}>
               <img
                 src={relatePost.imgUrl}
                 className=" h-40 mr-2 object-cover w-full"
@@ -350,7 +428,30 @@ export default function Post() {
               </p>
             </div>
           ))}
-          <div className="h-2" />
+          <div className="h-3" />
+          <PanelHeader>Categories</PanelHeader>
+          {categories.map((cate) => (
+            <div className="category hover:cursor-pointer py-2 mt-1">
+              <h2 className="categorychild font-cinzel text-lg font-semibold transition-all ease-in-out">
+                {cate}
+              </h2>
+            </div>
+          ))}
+
+          <div className="h-4" />
+          <PanelHeader>Tags</PanelHeader>
+          <div className="h-1" />
+          <div className="flex flex-wrap font-serif gap-2">
+            {commonTags.map((tag) => (
+              <div className="text-xs bg-gray-1 p-2 hover:cursor-pointer">
+                <span>{tag} (2)</span>
+              </div>
+            ))}
+
+            <div className="text-xs p-2 hover:cursor-pointer hover:underline">
+              <span>See more...</span>
+            </div>
+          </div>
         </div>
       </main>
       <Subscribe />
