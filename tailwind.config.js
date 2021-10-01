@@ -31,8 +31,11 @@ module.exports = {
       colors: {
         "prim-2": "#eae5e4",
         "prim-4": "#dfd3cf",
-        "prim-6": "#693c20",
+        "prim-6": "#69514D",
         "gray-1": "#F1F1F1",
+      },
+      height: {
+        "1px": "1px",
       },
       maxHeight: {
         "1/2-screen": "50vh",

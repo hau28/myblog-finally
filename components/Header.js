@@ -27,14 +27,23 @@ export default function Header({ homepage }) {
           } hidden md:block`}
         >
           <Link href="/qna">
-            <a className="hover:opacity-50 px-6 transition-all">ASK ME</a>
+            <a className="hover:opacity-50 px-3 lg:px-6 transition-all">
+              ASK ME
+            </a>
           </Link>
           <Link href="/post">
-            <a className="hover:opacity-50 px-6 transition-all">POSTS</a>
+            <a className="hover:opacity-50 px-3 lg:px-6 transition-all">
+              POSTS
+            </a>
           </Link>
           <Link href="/category">
-            <a className="hover:opacity-50 px-6 transition-all pr-7">
+            <a className="hover:opacity-50 px-3 lg:px-6 transition-all">
               CATEGORIES
+            </a>
+          </Link>
+          <Link href="/tag">
+            <a className="hover:opacity-50 px-3 lg:px-6 transition-all pr-4 lg:pr-7">
+              TAGS
             </a>
           </Link>
         </div>

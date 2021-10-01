@@ -42,7 +42,7 @@ export default function Subscribe() {
                 className={`flex-shrink-0 text-teal-500 text-sm pt-1 pr-2 text-2xl transition-all ${sendClass()}`}
                 type="button"
               >
-                <IoIosSend />
+                <IoIosSend className="text-2xl" />
               </button>
             </div>
           </form>

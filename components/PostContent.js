@@ -94,13 +94,13 @@ export function Figure() {
       {expand ? (
         <img
           src="https://9to5mac.com/wp-content/uploads/sites/6/2020/10/Orbs-Blue-Dark.jpg?quality=82&strip=all"
-          className="duration-75 max-h-full w-full h-full object-cover shadow-lg rounded-xl"
+          className="duration-75 max-h-full w-full h-full object-cover shadow-lg"
           onClick={() => toggleExpand()}
         />
       ) : (
         <img
           src="https://9to5mac.com/wp-content/uploads/sites/6/2020/10/Orbs-Blue-Dark.jpg?quality=82&strip=all"
-          className={`max-h-3/4-screen hover:max-h-3/4-screen-2rem ${"duration-300 transition-all ease-in-out"}  w-full h-full object-cover shadow-lg rounded-xl ${
+          className={`max-h-3/4-screen hover:max-h-3/4-screen-2rem ${"duration-300 transition-all ease-in-out"}  w-full h-full object-cover shadow-lg ${
             expand ? "hidden" : ""
           }`}
           onClick={() => {

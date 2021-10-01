@@ -59,7 +59,7 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <Head>
-        <title>My Blog</title>
+        <title>Lurking Thoughts</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="text-white lg:text-black self-stretch h-screen bg-prim-4 flex flex-col">
