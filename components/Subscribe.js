@@ -1,13 +1,10 @@
 import { useState } from "react";
+import { BottomLineInput } from "./Input";
 import { IoIosSend } from "react-icons/io";
 
 export default function Subscribe() {
   const [email, setEmail] = useState("");
-  const [focus, setFocus] = useState(false);
-  function sendClass() {
-    if (email.trim() && focus) return "opacity-100";
-    return "opacity-25";
-  }
+
   return (
     <div className="self-stretch bg-gray-1 flex flex-col py-32 md:px-6 md:px-10 xl:px-32">
       <div className="lg:px-16 px-6 text-center items-center grid md:grid-cols-2">
@@ -28,23 +25,12 @@ export default function Subscribe() {
               setEmail("");
             }}
           >
-            <div className="flex items-center border-b border-gray-400 py-2">
-              <input
-                className="font-serif bg-gray-1 border-none w-full mr-3 py-1 px-2 leading-tight focus:outline-none"
-                type="text"
-                placeholder="Your e-mail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                onFocus={() => setFocus(true)}
-                onBlur={() => setFocus(false)}
-              />
-              <button
-                className={`flex-shrink-0 text-teal-500 text-sm pt-1 pr-2 text-2xl transition-all ${sendClass()}`}
-                type="button"
-              >
-                <IoIosSend className="text-2xl" />
-              </button>
-            </div>
+            <BottomLineInput
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Your email"
+              IconComponent={IoIosSend}
+            />
           </form>
         </div>
       </div>
