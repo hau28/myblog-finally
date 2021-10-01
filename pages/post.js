@@ -7,6 +7,7 @@ import { IoSearchOutline } from "react-icons/io5";
 import { InputLabel, NativeSelect } from "@mui/material";
 import moment from "moment";
 import PostPreview from "../components/PostPreview";
+import Pagination from "../components/Pagination";
 
 const categories = ["Category 1", "Category 2", "Category 3"];
 const posts = [
@@ -220,11 +221,13 @@ export default function Post() {
           {form.year !== "All" ? ` ${form.year}` : ""}
           {form.search ? ` containing "${form.search}"` : ""}
         </h1>
+        <Pagination current={8} total={12} />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl self-center gap-4">
           {posts.map((post) => (
             <PostPreview {...post} />
           ))}
         </div>
+        <Pagination current={8} total={12} />
       </main>
       <Footer />
     </div>
