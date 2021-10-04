@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import { IoIosLink } from "react-icons/io";
 import { IoLogoFacebook } from "react-icons/io5";
 import { useEffect, useRef, useState } from "react";
@@ -11,7 +11,7 @@ import {
   downIconEnable,
   heartIcon,
   heartIconEnable,
-} from "../components/AnimatedIcons";
+} from "../../components/AnimatedIcons";
 import { useMediaQuery } from "react-responsive";
 import {
   P1,
@@ -25,12 +25,12 @@ import {
   Li,
   Blockquote,
   Figure,
-} from "../components/PostContent";
+} from "../../components/PostContent";
 import Script from "next/script";
-import Breadcrumbs from "../components/Breadcrumbs";
-import Subscribe from "../components/Subscribe";
+import Breadcrumbs from "../../components/Breadcrumbs";
+import Subscribe from "../../components/Subscribe";
 import { createTheme } from "@mui/system";
-import { Comment, CommentForm } from "../components/Comment";
+import { Comment, CommentForm } from "../../components/Comment";
 
 const post = {
   date: "19 Aug. 2020",
@@ -217,7 +217,7 @@ const comments = [
   },
 ];
 
-export default function Post() {
+export default function SinglePost() {
   const [fixedLeftPanel, setFixedLeftPanel] = useState(false);
   const [leftPanelWidth, setLeftPanelWidth] = useState(297);
   const [scrollBottom, setScrollBottom] = useState(false);

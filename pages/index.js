@@ -59,25 +59,25 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center min-h-screen">
       <Head>
-        <title>Lurking Thoughts</title>
+        <title>Vintage blog</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="text-white lg:text-black self-stretch h-screen bg-prim-4 flex flex-col">
         <div className="block lg:hidden bg-typing absolute w-full h-screen z-0 bg-no-repeat bg-cover" />
         <div className="block lg:hidden bg-black bg-opacity-60 absolute w-full h-screen z-0 bg-no-repeat bg-cover" />
         <Header homepage />
-        <div className="z-10 grid lg:grid-cols-2 min-h-full xl:px-16 pb-16 lg:pt-8">
+        <div className="z-10 grid lg:grid-cols-2 min-h-full xl:px-16 pb-16">
           <div className="p-8 pt-0 p-16 pt-8 hidden lg:block">
             <img
               className="object-cover flex-1 lg:min-h-full w-full"
               src="/typing.gif"
             />
           </div>
-          <div className="p-8 sm:p-16 pt-8 max-w-2xl lg:pl-0 flex flex-col justify-center">
+          <div className="p-8 sm:p-16  max-w-2xl lg:pl-0 flex flex-col justify-center">
             <h1 className="font-cinzel text-5xl sm:text-7xl mb-8">
               Lorem Ipsum
             </h1>
-            <p className="text-xl">
+            <p className="text-xl mb-8">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam, quis nostrud exercitation ullamco laboris

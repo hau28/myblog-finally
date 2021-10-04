@@ -1,13 +1,13 @@
 import Head from "next/head";
 import { useState } from "react";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import { BottomLineInput } from "../components/Input";
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import { BottomLineInput } from "../../components/Input";
 import { IoSearchOutline } from "react-icons/io5";
 import { InputLabel, NativeSelect } from "@mui/material";
 import moment from "moment";
-import PostPreview from "../components/PostPreview";
-import Pagination from "../components/Pagination";
+import PostPreview from "../../components/PostPreview";
+import Pagination from "../../components/Pagination";
 
 const categories = ["Category 1", "Category 2", "Category 3"];
 const posts = [

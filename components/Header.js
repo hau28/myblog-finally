@@ -28,26 +28,28 @@ export default function Header({ homepage, className }) {
       <div className="flex items-center tracking-widest">
         <div
           className={`flex items-center divide-x ${
-            homepage ? "divide-white lg:divide-black" : "divide-black"
+            homepage
+              ? "divide-white text-white lg:divide-black lg:text-black"
+              : "divide-black "
           } hidden md:block`}
         >
           <Link href="/qna">
-            <a className="hover:opacity-50 px-3 lg:px-6 transition-all text-black hover:text-prim-6 text-base">
+            <a className="hover:opacity-50 px-3 lg:px-6 transition-all hover:text-prim-6 text-base">
               ASK ME
             </a>
           </Link>
           <Link href="/post">
-            <a className="hover:opacity-50 px-3 lg:px-6 transition-all text-black hover:text-prim-6 text-base">
+            <a className="hover:opacity-50 px-3 lg:px-6 transition-all hover:text-prim-6 text-base">
               POSTS
             </a>
           </Link>
           <Link href="/category">
-            <a className="hover:opacity-50 px-3 lg:px-6 transition-all text-black hover:text-prim-6 text-base">
+            <a className="hover:opacity-50 px-3 lg:px-6 transition-all hover:text-prim-6 text-base">
               CATEGORIES
             </a>
           </Link>
           <Link href="/tag">
-            <a className="hover:opacity-50 px-3 lg:px-6 transition-all text-black hover:text-prim-6 text-base pr-4 lg:pr-7">
+            <a className="hover:opacity-50 px-3 lg:px-6 transition-all  hover:text-prim-6 text-base pr-4 lg:pr-7">
               TAGS
             </a>
           </Link>

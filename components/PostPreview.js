@@ -26,12 +26,12 @@ export default function PostPreview({
           />
         </div>
       </Link>
-      <Link href="/">
+      <Link href="/post/1">
         <p className="font-playfair italic text-prim-6 mb-2 hover:cursor-pointer hover:underline">
           On {date}
         </p>
       </Link>
-      <Link href="/">
+      <Link href="/post/1">
         <h2
           onMouseOver={() => setHoverPost(true)}
           onMouseOut={() => setHoverPost(false)}
